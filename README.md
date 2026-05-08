@@ -32,12 +32,26 @@ This branch (`toolrl-reproduction`) contains our full reproduction of the ToolRL
 #### Qwen2.5-3B
 | Model | Paper | Ours |
 |-------|-------|------|
-| Raw (no training) | 51.59% | 33.84% |
+| Raw (no training) | 51.59% | 53.27% (parser bug fixed) |
 | SFT400 | 52.76% | 56.78% |
 | SFT400 + GRPO (warm) | 62.48% | 54.61% |
 | SFT400 + PPO (warm) | 65.16% | 59.46% |
 | GRPO Cold Start | 67.00% | 62.98% |
 | PPO Cold Start | 57.62% | 47.57% |
+
+### BFCL Results (5 cells, paper-handler reruns)
+
+| Model | Non-Live AST | Live | Multi-Turn | Irrelevance | Overall |
+|-------|-------------|------|------------|-------------|---------|
+| 1.5B PPO Cold | 81.27 | 67.21 | 1.25 | 27.90 | 18.14 |
+| 3B PPO Cold | 84.12 | 71.35 | 8.50 | 71.51 | 25.76 |
+| 1.5B GRPO Cold (original) | 77.25 | 64.69 | 2.00 | 12.50 | 17.55 |
+| 1.5B GRPO Warm | 66.38 | 54.55 | 0.12 | 56.37 | 18.63 |
+| 1.5B GRPO Cold (coarse reward) | 74.65 | 57.88 | 0.00 | 7.60 | 14.01 |
+
+Paper Table 1 reports 79.40 Non-Live AST and 45.24 Live for 1.5B PPO Cold. Our Non-Live AST (81.27) is close; Live (67.21) is higher by ~22 points. Multi-Turn is low across all cells because this category is scored on single-turn models.
+
+Score CSVs: `benchmarks/BFCL/results/bfcl_overall_2026-04-27.csv` and `bfcl_overall_2026-05-08.csv`.
 
 ### Infrastructure
 - Cold start GRPO/PPO: 4x H100 80GB (KVM, Chameleon Cloud)
