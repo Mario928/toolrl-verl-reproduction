@@ -126,6 +126,8 @@ sudo docker exec -d verl bash -c '
     export N_GPUS=4
     export ROLLOUT_TP_SIZE=1
     export VLLM_ATTENTION_BACKEND=XFORMERS
+    export WITHLENGTH=0 REFINEDREWARD=0 COARSEREWARD=0 STRICTMATCH=0
+    export CORRECTMAX1=0 MAX1STEP30MAX3=0 SCHEDULEREWARD=0 SCHEDULELENGTH=0
     export DATA_DIR="./dataset/rlla_4k"
     export BASE_MODEL="Qwen/Qwen2.5-1.5B-Instruct"
     export EXPERIMENT_NAME="/app/models/toolrl-ppo-cold-qwen-1.5b"
@@ -140,10 +142,28 @@ sudo docker exec -d verl bash -c '
     export N_GPUS=4
     export ROLLOUT_TP_SIZE=2
     export VLLM_ATTENTION_BACKEND=XFORMERS
+    export WITHLENGTH=0 REFINEDREWARD=0 COARSEREWARD=0 STRICTMATCH=0
+    export CORRECTMAX1=0 MAX1STEP30MAX3=0 SCHEDULEREWARD=0 SCHEDULELENGTH=0
     export DATA_DIR="./dataset/rlla_4k"
     export BASE_MODEL="Qwen/Qwen2.5-3B-Instruct"
     export EXPERIMENT_NAME="/app/models/toolrl-grpo-cold-qwen-3b"
     cd /workspace && bash ./examples/grpo_trainer/run_grpo.sh > /tmp/train.log 2>&1
+'
+```
+
+**PPO cold start, 3B** (~8 hours):
+```bash
+sudo docker exec -d verl bash -c '
+    export CUDA_VISIBLE_DEVICES=0,1,2,3
+    export N_GPUS=4
+    export ROLLOUT_TP_SIZE=2
+    export VLLM_ATTENTION_BACKEND=XFORMERS
+    export WITHLENGTH=0 REFINEDREWARD=0 COARSEREWARD=0 STRICTMATCH=0
+    export CORRECTMAX1=0 MAX1STEP30MAX3=0 SCHEDULEREWARD=0 SCHEDULELENGTH=0
+    export DATA_DIR="./dataset/rlla_4k"
+    export BASE_MODEL="Qwen/Qwen2.5-3B-Instruct"
+    export EXPERIMENT_NAME="/app/models/toolrl-ppo-cold-qwen-3b"
+    cd /workspace && bash ./examples/ppo_trainer/run_ppo.sh > /tmp/train.log 2>&1
 '
 ```
 
