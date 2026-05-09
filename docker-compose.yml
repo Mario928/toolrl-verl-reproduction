@@ -27,14 +27,14 @@ services:
 
 volumes:
   hf_cache:
-    name: math-reasoning-rl_hf_cache
+    name: toolrl_hf_cache
     external: true
   models:
-    name: math-reasoning-rl_models
+    name: toolrl_models
     external: true
   datasets:
-    name: math-reasoning-rl_datasets
+    name: toolrl_datasets
     external: true
   mlflow_data:
-    name: math-reasoning-rl_mlflow_data
+    name: toolrl_mlflow_data
     external: true
