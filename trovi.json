@@ -1,0 +1,9 @@
+{
+  "title": "ToolRL: Reward is All Tool Learning Needs -- Reproduction",
+  "authors": [
+    {"name": "Fraida Fund", "affiliation": "New York University", "email": "ff524@nyu.edu"},
+    {"name": "Prashant Shihora", "affiliation": "New York University", "email": "ps5226@nyu.edu"}
+  ],
+  "description": "Reproduction of ToolRL (Qian et al. 2025) on verl framework with Qwen2.5-1.5B and 3B.",
+  "tags": ["reproducible research", "example", "experiment"]
+}
