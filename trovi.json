@@ -1,9 +1,9 @@
 {
   "title": "ToolRL: Reward is All Tool Learning Needs -- Reproduction",
   "authors": [
-    {"name": "Fraida Fund", "affiliation": "New York University", "email": "ff524@nyu.edu"},
-    {"name": "Prashant Shihora", "affiliation": "New York University", "email": "ps5226@nyu.edu"}
+    {"name": "Prashant Shihora", "affiliation": "New York University", "email": "ps5226@nyu.edu"},
+    {"name": "Fraida Fund", "affiliation": "New York University", "email": "ff524@nyu.edu"}
   ],
-  "description": "Reproduction of ToolRL (Qian et al. 2025) on verl framework with Qwen2.5-1.5B and 3B.",
+  "description": "This artifact reproduces ToolRL (Qian et al., \"ToolRL: Reward is All Tool Learning Needs\", arXiv:2504.13958, 2025) on the verl framework using Qwen2.5-1.5B and Qwen2.5-3B base models. We trained 11 model cells covering GRPO and PPO with both cold-start and warm-start (SFT400) initialization, then evaluated all 11 cells on API-Bank (597 questions) and 5 cells on BFCL V4. We successfully replicated the paper's qualitative conclusion that GRPO cold-start outperforms PPO and that warm-start hurts smaller models; our absolute numbers differ from the paper by 3-16 percentage points, which we attribute to RL training variance. Our independent contributions are a parser bug we found and fixed in the paper's API-Bank evaluation script (verified byte-for-byte against the authors' public repo), and a documented format-collapse mechanism in 3B warm-start models. The provisioning notebook reproduce.ipynb runs on a Chameleon KVM@TACC H100 instance and executes one demo training step end-to-end so a reader can verify the full pipeline works before scaling up.",
   "tags": ["reproducible research", "example", "experiment"]
 }
